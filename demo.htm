@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FireShot API Capture</title>
+    <script type="text/javascript" src="fsapi.js" onerror="alert('Error: failed to load ' + this.src)"></script>
+    <script>
+        // Set this to *false* to avoid addon auto-installation if missed.
+        FireShotAPI.AutoInstall = true;
+
+        // Function to capture the entire page
+        function captureEntirePage() {
+            FireShotAPI.capturePage(true, cFSSave, undefined, undefined, function(data) {
+                console.log("Capture Complete: ", data);
+                // You can handle the captured data here, e.g., send it to a server or another Zapier step
+            });
+        }
+
+        // Trigger the capture function on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                captureEntirePage();
+            }, 1000); // Add a delay to ensure FireShot API is fully initialized
+        });
+    </script>
+</head>
+
+<body>
+    <div align="center">
+        <p>The page will be captured automatically on load.</p>
+    </div>
+</body>
+
+</html>
